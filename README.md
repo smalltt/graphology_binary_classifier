@@ -13,3 +13,8 @@ Steps:
 sudo docker run --gpus all -it -v "$PWD":/usr/test --rm tensorflow/graphology-tensorflow:2.11.0-gpu
 2.
 cd /usr/test
+
+
+run
+python tools/MNIST_generator.py
+to generate MNIST dataset locally
