@@ -22,7 +22,6 @@ def save_model(arg_model_json_path,arg_label_obj_path,arg_model,arg_model_weight
     arg_model.save(arg_model_weights_path)
     arg_model.save(arg_model_default_save_path)
 
-# plot loss and accuracy
 def plot_loss_accuracy(arg_model_fit_output, arg_nb_epochs):
     plt.style.use("ggplot")
     plt.figure()

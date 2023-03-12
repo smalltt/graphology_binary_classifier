@@ -29,11 +29,9 @@ if __name__ == "__main__":
 
     ds.visualize_sample_data(train_ds, class_names)
 
-    '''
     # Prefetching samples in GPU memory helps maximize GPU utilization.
     train_ds = train_ds.prefetch(tf.data.AUTOTUNE)
     val_ds = val_ds.prefetch(tf.data.AUTOTUNE)
-    '''
 
     '''
     import warnings
@@ -66,7 +64,7 @@ if __name__ == "__main__":
     )
 
     callbacks = [
-        keras.callbacks.ModelCheckpoint("save_at_{epoch}.keras"),
+        keras.callbacks.ModelCheckpoint("model_files/save_at/save_at_{epoch}.keras"),
     ]
 
     # train model
