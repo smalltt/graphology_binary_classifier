@@ -131,7 +131,7 @@ def save_model(arg_model,arg_model_weights_path,arg_model_default_save_path):
     # serialize weights to HDF5
     arg_model.save_weights(arg_model_weights_path)
     arg_model.save(arg_model_weights_path)
-    arg_model.save(model_default_save_path)
+    arg_model.save(arg_model_default_save_path)
     
 # plot loss and accuracy
 def plot_loss_accuracy(arg_model_fit_output, arg_nb_epochs):
@@ -194,7 +194,7 @@ def make_model(arg_input_shape, arg_num_classes):
         units = 1
     else:
         activation = "softmax"
-        units = num_classes
+        units = arg_num_classes
 
     x = layers.Dropout(0.5)(x)
     outputs = layers.Dense(units, activation=activation)(x)
@@ -220,7 +220,7 @@ if __name__ == "__main__":
 
     # check if the folder exists
     model_json_path = 'model_files/model.json'
-    label_obj_path = 'model_files/labels.sav'
+    label_obj_path = 'model_files/labels.save'
     # model_path = 'model_files/model.h5'
     model_weights_path = 'model_files/model_weights.h5'
     model_default_save_path  = 'model_files/tf_model.save'

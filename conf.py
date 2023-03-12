@@ -9,7 +9,7 @@ val_spit=0.2
 
 # check if the folder exists
 model_json_path = 'model_files/model.json'
-label_obj_path = 'model_files/labels.sav'
+label_obj_path = 'model_files/labels.save'
 # model_path = 'model_files/model.h5'
 model_weights_path = 'model_files/model_weights.h5'
 model_default_save_path  = 'model_files/tf_model.save'
