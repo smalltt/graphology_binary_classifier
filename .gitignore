@@ -6,6 +6,9 @@ __pycache__/
 # .h5
 *.h5
 
+# .keras
+*.keras
+
 # C extensions
 *.so
 
