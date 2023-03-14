@@ -19,8 +19,6 @@ cd /usr/test
 nohup tensorboard --logdir=/usr/test/logs/ --bind_all &
 
 4.
-http://<backend-server-ip>:6006
-
 http://127.0.0.1:6006
 
 
