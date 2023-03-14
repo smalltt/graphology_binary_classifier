@@ -22,4 +22,4 @@ image_size = 150
 input_shape = (150, 150, 3)
 input_im_size = (150, 150)
 batch_size = 32
-epochs = 10
+epochs = 3000

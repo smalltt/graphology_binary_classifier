@@ -58,9 +58,12 @@ if __name__ == "__main__":
 
     # model compile
     model.compile(
-        optimizer=keras.optimizers.Adam(1e-3),
-        loss="binary_crossentropy",
-        metrics=["accuracy"],
+        # optimizer=keras.optimizers.Adam(1e-3),
+        # loss="binary_crossentropy",
+        # metrics=["accuracy"],
+        optimizer=keras.optimizers.Adam(),
+        loss=keras.losses.BinaryCrossentropy(),
+        metrics=[keras.metrics.BinaryAccuracy()],
     )
 
     callbacks = [
@@ -84,5 +87,5 @@ if __name__ == "__main__":
 
     # save trained model
     utils.save_model(conf.model_json_path, conf.label_obj_path, model, conf.model_weights_path, conf.model_last_save_path)
-    
+
     utils.plot_loss_accuracy(model_fit_output, conf.epochs)
