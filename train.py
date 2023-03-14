@@ -76,6 +76,6 @@ if __name__ == "__main__":
     )
 
     # save trained model
-    utils.save_model(conf.model_json_path, conf.label_obj_path, model, conf.model_weights_path, conf.model_default_save_path)
+    utils.save_model(conf.model_json_path, conf.label_obj_path, model, conf.model_weights_path, conf.model_last_save_path)
     
     utils.plot_loss_accuracy(model_fit_output, conf.epochs)

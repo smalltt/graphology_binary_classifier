@@ -3,8 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# .h5
+# filter out all type of trained model
 *.h5
+*.json
+labels.save
+model_files/save_best_at/
+model_files/tf_model.save/
 
 # .keras
 *.keras
