@@ -15,6 +15,9 @@ model_weights_path = 'model_files/last_epoch_model_weights.h5'
 model_last_save_path  = 'model_files/last_epoch_tf_model.save'
 model_best_path = "model_files/save_best_at/save_best_at_{epoch}.save"
 
+# logs
+logs = "logs"
+
 image_size = 150
 input_shape = (150, 150, 3)
 input_im_size = (150, 150)
