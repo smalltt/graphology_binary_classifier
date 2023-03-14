@@ -64,7 +64,14 @@ if __name__ == "__main__":
     )
 
     callbacks = [
+        # save the best model
         keras.callbacks.ModelCheckpoint("model_files/save_at/save_at_{epoch}.keras"),
+        # save logs
+        tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
+        # # early stop
+        # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy',min_delta=0.0001,patience=5,restore_best_weights=True),
+        # # save model deopones on frequecy
+        # tf.keras.callbacks.ModelCheckpoint(filepath="tf_model_epoch-{epoch:04d}", verbose=1, save_weights_only=False, save_freq=50)
     ]
 
     # train model
