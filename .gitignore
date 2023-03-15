@@ -10,6 +10,9 @@ labels.save
 model_files/save_best_at/
 model_files/tf_model.save/
 
+# nohup.out
+nohup.out
+
 # .keras
 *.keras
 

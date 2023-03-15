@@ -237,6 +237,12 @@ if __name__ == "__main__":
         # tf.keras.callbacks.ModelCheckpoint(filepath="tf_model_epoch-{epoch:04d}", verbose=1, save_weights_only=False, save_freq=50)
     ]
 
+    # # Define a callback to save the best model
+    # checkpoint_callback =[
+    #     tf.keras.callbacks.TensorBoard(log_dir='./tf_cnn_board', histogram_freq=1),
+    #     tf.keras.callbacks.ModelCheckpoint(filepath='best_model.h5', save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1)
+    # ]
+
     # train model
     model_fit_output = model.fit(
         train_ds,

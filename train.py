@@ -58,12 +58,12 @@ if __name__ == "__main__":
 
     # model compile
     model.compile(
-        # optimizer=keras.optimizers.Adam(1e-3),
-        # loss="binary_crossentropy",
-        # metrics=["accuracy"],
-        optimizer=keras.optimizers.Adam(),
-        loss=keras.losses.BinaryCrossentropy(),
-        metrics=[keras.metrics.BinaryAccuracy()],
+        optimizer=keras.optimizers.Adam(1e-3),
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+        # optimizer=keras.optimizers.Adam(),
+        # loss=keras.losses.BinaryCrossentropy(),
+        # metrics=[keras.metrics.BinaryAccuracy()],
     )
 
     callbacks = [
@@ -71,10 +71,19 @@ if __name__ == "__main__":
         keras.callbacks.ModelCheckpoint("model_files/save_at/save_at_{epoch}.keras"),
         # save logs
         tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
-        # # early stop
+        # early stop
         # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy',min_delta=0.0001,patience=5,restore_best_weights=True),
         # # save model deopones on frequecy
         # tf.keras.callbacks.ModelCheckpoint(filepath="tf_model_epoch-{epoch:04d}", verbose=1, save_weights_only=False, save_freq=50)
+    ]
+
+    checkpoint_callback =[
+        # save logs
+        tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
+        # save the best model
+        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
+        # save the model for each epoch
+        keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
     ]
 
     # train model
