@@ -6,9 +6,16 @@ __pycache__/
 # filter out all type of trained model
 *.h5
 *.json
+*.pb
 labels.save
-model_files/save_best_at/
-model_files/tf_model.save/
+model_files/best_model/
+model_files/last_epoch_tf_model.h5/
+
+# nohup.out
+*.out
+
+# log
+logs
 
 # .keras
 *.keras

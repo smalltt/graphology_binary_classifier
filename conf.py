@@ -8,18 +8,22 @@ test_ds_dir = "/usr/test/data/eg1/testing"
 val_spit=0.2
 
 # check if the folder exists
-model_json_path = 'model_files/model.json'
-label_obj_path = 'model_files/labels.save'
-# model_path = 'model_files/model.h5'
-model_weights_path = 'model_files/last_epoch_model_weights.h5'
-model_last_save_path  = 'model_files/last_epoch_tf_model.save'
-model_best_path = "model_files/save_best_at/save_best_at_{epoch}.save"
+import os
+output_folder = 'output'
+model_json_path = os.path.join(output_folder, 'model.json')
+label_obj_path = os.path.join(output_folder, 'labels.h5')
+model_each_epoch_path = os.path.join(output_folder, 'each_epoch', 'model_at_{epoch}.h5')
+model_weights_path = os.path.join(output_folder, 'last_epoch_model_weights.h5')
+model_last_save_path  = os.path.join(output_folder, 'last_epoch_tf_model.h5')
+model_best_path = os.path.join(output_folder, 'best_model', 'best_model_at_{epoch}.h5')
+model_best_file_path = os.path.join(output_folder, 'best_model', 'best_model_at_154.h5')
 
 # logs
 logs = "logs"
 
+# hyperparameters for modeling
 image_size = 150
-input_shape = (150, 150, 3)
-input_im_size = (150, 150)
-batch_size = 32
-epochs = 10
+input_shape = (image_size, image_size, 3)
+input_im_size = (image_size, image_size)
+batch_size = 16
+epochs = 3000
