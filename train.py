@@ -2,11 +2,13 @@
 
 from utils import gpu as GPU
 from utils import dataset as ds
+from utils import folder
 from models import model1
 import conf
 import tensorflow as tf
 from tensorflow import keras
 from models import model_utils as utils
+
 
 if __name__ == "__main__":
 
@@ -85,6 +87,10 @@ if __name__ == "__main__":
         # save the model for each epoch
         keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
     ]
+
+    # create folder to store output after remove it
+    folder.remove(conf.output_folder)
+    folder.create(conf.output_folder)
 
     # train model
     model_fit_output = model.fit(
