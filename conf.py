@@ -16,7 +16,7 @@ model_each_epoch_path = os.path.join(output_folder, 'each_epoch', 'model_at_{epo
 model_weights_path = os.path.join(output_folder, 'last_epoch_model_weights.h5')
 model_last_save_path  = os.path.join(output_folder, 'last_epoch_tf_model.h5')
 model_best_path = os.path.join(output_folder, 'best_model', 'best_model_at_{epoch}.h5')
-model_best_file_path = os.path.join(output_folder, 'best_model', 'best_model_at_154.h5')
+model_best_file_path = os.path.join(output_folder, 'best_model', 'best_model_at_2.h5')
 
 # logs
 logs = "logs"
@@ -26,4 +26,4 @@ image_size = 150
 input_shape = (image_size, image_size, 3)
 input_im_size = (image_size, image_size)
 batch_size = 16
-epochs = 3000
+epochs = 2
