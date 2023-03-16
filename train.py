@@ -81,8 +81,7 @@ if __name__ == "__main__":
         # save logs
         tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
         # save the best model
-        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, mode='max', verbose=1),
-        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
+        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=0),
         # # save the model for each epoch
         # keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
     ]
