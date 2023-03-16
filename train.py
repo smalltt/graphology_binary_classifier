@@ -92,6 +92,10 @@ if __name__ == "__main__":
     folder.remove(conf.output_folder)
     folder.create(conf.output_folder)
 
+    # create folder to store log after remove it
+    folder.remove(conf.logs)
+    folder.create(conf.logs)
+
     # train model
     model_fit_output = model.fit(
         train_ds,

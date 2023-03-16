@@ -13,6 +13,9 @@ model_files/tf_model.save/
 # nohup.out
 nohup.out
 
+# log
+logs
+
 # .keras
 *.keras
 

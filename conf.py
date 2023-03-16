@@ -9,7 +9,7 @@ val_spit=0.2
 
 # check if the folder exists
 import os
-output_folder = 'model_files'
+output_folder = 'output'
 model_json_path = os.path.join(output_folder, 'model.json')
 label_obj_path = os.path.join(output_folder, 'labels.save')
 model_each_epoch_path = os.path.join(output_folder, 'each_epoch', 'model_at_{epoch}.save')
