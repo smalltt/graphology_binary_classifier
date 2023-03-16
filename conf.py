@@ -11,11 +11,12 @@ val_spit=0.2
 import os
 output_folder = 'output'
 model_json_path = os.path.join(output_folder, 'model.json')
-label_obj_path = os.path.join(output_folder, 'labels.save')
-model_each_epoch_path = os.path.join(output_folder, 'each_epoch', 'model_at_{epoch}.save')
+label_obj_path = os.path.join(output_folder, 'labels.h5')
+model_each_epoch_path = os.path.join(output_folder, 'each_epoch', 'model_at_{epoch}.h5')
 model_weights_path = os.path.join(output_folder, 'last_epoch_model_weights.h5')
-model_last_save_path  = os.path.join(output_folder, 'last_epoch_tf_model.save')
-model_best_path = os.path.join(output_folder, 'best_model', 'best_model_at_{epoch}.save')
+model_last_save_path  = os.path.join(output_folder, 'last_epoch_tf_model.he')
+model_best_path = os.path.join(output_folder, 'best_model', 'best_model_at_{epoch}.h5')
+model_best_file_path = os.path.join(output_folder, 'best_model', 'best_model_at_154.h5')
 
 # logs
 logs = "logs"

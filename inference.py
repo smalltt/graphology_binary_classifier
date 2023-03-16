@@ -8,12 +8,12 @@ import conf
 if __name__=="__main__":
 
     # load trained model
-    loaded_model = tf.keras.models.load_model(conf.model_best_path)
+    loaded_model = tf.keras.models.load_model(conf.model_best_file_path)
     loaded_model.summary()
 
     # load image for inference
     img = keras.preprocessing.image.load_img(
-        "data/eg1_mnist/testing/1/2.png", target_size=conf.input_im_size
+        "data/eg1/testing/conscientiousness/7.jpg", target_size=conf.input_im_size
     )
     img_array = keras.preprocessing.image.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)  # Create batch axis

@@ -1,13 +1,14 @@
 # This script is for model training
 
-from utils import gpu as GPU
-from utils import dataset as ds
-from utils import folder
-from models import model1
+import os
+from common_utils import gpu as GPU
+from common_utils import dataset as ds
+from common_utils import folder
+from model_utils import model1
 import conf
 import tensorflow as tf
 from tensorflow import keras
-from models import model_utils as utils
+from model_utils import model_utils as utils
 
 
 if __name__ == "__main__":
@@ -21,6 +22,14 @@ if __name__ == "__main__":
         print("GPU is enable")
     else:
         print("NO GPU is available")
+
+    # create folder to store output after remove it
+    folder.remove(conf.output_folder)
+    folder.create(conf.output_folder)
+
+    # create folder to store log after remove it
+    folder.remove(conf.logs)
+    folder.create(conf.logs)
 
     # generate training and validation dataset
     train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_spit)
@@ -48,7 +57,7 @@ if __name__ == "__main__":
 
     # plot model network
     keras.utils.plot_model(
-        model, to_file='model_files/model.png', show_shapes=False,
+        model, to_file= os.path.join(conf.output_folder, 'model.png'), show_shapes=False,
         show_dtype=False,
         show_layer_names=True,
         rankdir='TB',
@@ -68,43 +77,25 @@ if __name__ == "__main__":
         # metrics=[keras.metrics.BinaryAccuracy()],
     )
 
-    callbacks = [
-        # save the best model
-        keras.callbacks.ModelCheckpoint("model_files/save_at/save_at_{epoch}.keras"),
-        # save logs
-        tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
-        # early stop
-        # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy',min_delta=0.0001,patience=5,restore_best_weights=True),
-        # # save model deopones on frequecy
-        # tf.keras.callbacks.ModelCheckpoint(filepath="tf_model_epoch-{epoch:04d}", verbose=1, save_weights_only=False, save_freq=50)
-    ]
-
-    checkpoint_callback =[
+    callback =[
         # save logs
         tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
         # save the best model
+        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, mode='max', verbose=1),
         tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
-        # save the model for each epoch
-        keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
+        # # save the model for each epoch
+        # keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
     ]
-
-    # create folder to store output after remove it
-    folder.remove(conf.output_folder)
-    folder.create(conf.output_folder)
-
-    # create folder to store log after remove it
-    folder.remove(conf.logs)
-    folder.create(conf.logs)
 
     # train model
     model_fit_output = model.fit(
         train_ds,
         epochs=conf.epochs,
-        callbacks=callbacks,
+        callbacks=callback,
         validation_data=val_ds,
     )
 
     # save trained model
     utils.save_model(conf.model_json_path, conf.label_obj_path, model, conf.model_weights_path, conf.model_last_save_path)
 
-    utils.plot_loss_accuracy(model_fit_output, conf.epochs)
+    utils.plot_loss_accuracy(model_fit_output, conf.epochs, conf.output_folder)

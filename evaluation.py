@@ -3,11 +3,11 @@
 import tensorflow as tf
 from tensorflow import keras
 import conf
-from utils import dataset as ds
+from common_utils import dataset as ds
 
 if __name__=="__main__":
     # load trained model
-    loaded_model = tf.keras.models.load_model(conf.model_best_path)
+    loaded_model = tf.keras.models.load_model(conf.model_best_file_path)
     loaded_model.summary()
 
     # generate testing dataset
