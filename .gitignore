@@ -14,6 +14,9 @@ model_files/last_epoch_tf_model.h5/
 # nohup.out
 *.out
 
+# image
+*.png
+
 # log
 logs
 
