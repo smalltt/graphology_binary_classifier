@@ -7,20 +7,6 @@ import numpy as np
 import os
 
 def save_model(arg_model,arg_model_last_model_path):
-# def save_model(arg_model_json_path,arg_label_obj_path,arg_model,arg_model_weights_path,arg_model_last_model_path):
-    # # serialize model to JSON
-    # model_json = arg_model.to_json()
-    # with open(arg_model_json_path, "w") as json_file:
-    #     json_file.write(model_json)
-
-    # lb = LabelEncoder()
-    # # pickle label encoder obj
-    # with open(arg_label_obj_path, 'wb') as lb_obj:
-    #     pickle.dump(lb, lb_obj)
-
-    # # serialize weights to HDF5
-    # arg_model.save_weights(arg_model_weights_path)
-    # arg_model.save(arg_model_weights_path)
     arg_model.save(arg_model_last_model_path)
 
 def plot_loss_accuracy(arg_model_fit_output, arg_output_folder):
