@@ -1,4 +1,4 @@
-## copy image into specific folder
+## copy images with the names in the folder of 'name_path' from the folder of 'img_path' into the folder of 'copy_path'.
 import os
 import time
 import cv2
