@@ -35,3 +35,7 @@
 - function: preprocess image by denoise, binarization, dilation, (resize).
 - install opencv with python==3.6.9
 - $ pip install opencv-python
+
+## copy_img.py
+- function: copy images with the names in the folder of 'name_path' from the folder of 'img_path' into the folder of 'copy_path'.
+- install opencv with python==3.6.9
