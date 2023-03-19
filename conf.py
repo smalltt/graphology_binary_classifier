@@ -3,8 +3,13 @@
 # data source path
 # train_ds_dir = "/usr/test/data/eg1_mnist/training"
 # test_ds_dir = "/usr/test/data/eg1_mnist/testing"
-train_ds_dir = "/usr/test/data/eg1/training"
+
+# train_ds_dir = "/usr/test/data/eg1/training"
+# test_ds_dir = "/usr/test/data/eg1/testing"
+
+train_ds_dir = "/usr/test/data/eg1/training/splitted/"
 test_ds_dir = "/usr/test/data/eg1/testing"
+
 val_spit=0.2
 
 # check if the folder exists
@@ -28,4 +33,4 @@ image_size = 150
 input_shape = (image_size, image_size, 3)
 input_im_size = (image_size, image_size)
 batch_size = 16
-epochs = 10
+epochs = 3000
