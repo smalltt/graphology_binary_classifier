@@ -2,10 +2,12 @@
 import os
 import time
 import cv2
-# from scipy.misc import imresize   # conda install scipy==1.1.0
+import sys
 
-img_path = '/home/lassena/yan_projects/data/2classes_nosplit_balanced/eg1_eng_clean/testing/extraversion'
-pre_img_path = '/home/lassena/yan_projects/data/2classes_nosplit_balanced/eg1_eng_clean/testing_pre/extraversion'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
+sys.path.insert(0, parent_dir_path)
+import common_utils.folder as folder
 
 def preprocessing_img(x):
     
@@ -24,17 +26,30 @@ def preprocessing_img(x):
 
     return x
 
-count = 0
-for folder, subfolders, files in os.walk(img_path):
-      for name in files:
-        if name.endswith('.jpg'):
-          x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
-          count = count + 1
-          start_time = time.time()
-          x = preprocessing_img(x)  # preprocessing
-          cv2.imwrite(pre_img_path+'/'+name, x)
-          print('--- %s / %s ---' %(count,len(files)))
-          print('has done %s for %s seconds' %(name,time.time() - start_time))
-    
-print('&'*9)
-print('Finishing preprocessing!')
+def start(arg_img_path,arg_pre_img_path):
+  count = 0
+  for folder, subfolders, files in os.walk(arg_img_path):
+        for name in files:
+          if name.endswith('.jpg'):
+            x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
+            count = count + 1
+            start_time = time.time()
+            x = preprocessing_img(x)  # preprocessing
+            cv2.imwrite(arg_pre_img_path+'/'+name, x)
+            print('--- %s / %s ---' %(count,len(files)))
+            print('has done %s for %s seconds' %(name,time.time() - start_time))
+
+if __name__=="__main__":
+  # folder_path = "/usr/test/data/eg1/training/conscientiousness"
+  # targert_folder = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
+
+  folder_path = "/usr/test/data/eg1/training/extraversion"
+  targert_folder = "/usr/test/data/eg1/training/preprocessed_extraversion"
+
+  folder.remove(targert_folder)
+  folder.create(targert_folder)
+
+  start(folder_path,targert_folder)
+
+  print('&'*9)
+  print('Finishing preprocessing!')
