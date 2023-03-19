@@ -16,6 +16,7 @@ model_files/last_epoch_tf_model.h5/
 
 # image
 *.png
+*.jpg
 
 # log
 logs

@@ -80,7 +80,7 @@ if __name__ == "__main__":
         tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
         # # save the model for each epoch
         # keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
-        tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', min_delta=0.001, patience=2, mode='auto', restore_best_weights=True),
+        # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', min_delta=0.001, patience=2, mode='auto', restore_best_weights=True),
     ]
 
     # train model
