@@ -11,6 +11,21 @@ labels.save
 model_files/best_model/
 model_files/last_epoch_tf_model.h5/
 
+# filter out .save
+*.save*
+
+# filter out tf_cnn_board
+tf_cnn_board*
+
+# filter out model_files
+model_files*
+
+# filter out tf_model
+tf_model*
+
+# filter out .txt
+*.txt
+
 # nohup.out
 *.out
 

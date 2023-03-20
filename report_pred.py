@@ -14,7 +14,7 @@ BATCH_SIZE = 2048  # 32(*), 64, 128, 256, 512, 700, 1024, 2048
 IMAGE_SIZE = 150
 
 test_ds = image_dataset_from_directory(
-    directory="/usr/test/data/2classes_split_balanced/eg1/split_9_12/testing",  # 2classes_split_balanced/eg1/split_1_2/testing
+    directory="/usr/test/data/2classes_nosplit_balanced/eg1/testing",  # 2classes_split_balanced/eg1/split_1_2/testing
     batch_size=BATCH_SIZE,
     image_size=(IMAGE_SIZE, IMAGE_SIZE),
     seed=123,
@@ -33,17 +33,23 @@ y_test = y_test_label.numpy()
 print('len(y_test): ', len(y_test))  # len(y_test):  28
 
 # load model
-model = load_model('tf_model.save')
+model = load_model('tf_model.save_split9_12_eg1_eng')
 
 # evaluate the network
 
 BATCH_SIZE = 32  # 32(*), 64, 128, 256, 512, 700, 1024, 2048
 test_ds = image_dataset_from_directory(
-    directory="/usr/test/data/2classes_split_balanced/eg1/split_9_12/testing",  # 2classes_nosplit_balanced/eg1/testing
+    directory="/usr/test/data/2classes_nosplit_balanced/eg1/testing",  # 2classes_nosplit_balanced/eg1/testing
     batch_size=BATCH_SIZE,
     image_size=(IMAGE_SIZE, IMAGE_SIZE),
     seed=123,
 )
+
+score = model.evaluate(test_ds, verbose=1)
+print('%'*9)  
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])
+
 out = model.predict(test_ds)
 print('!'*9)
 print('out.argmax(axis=1): ', out.argmax(axis=1))  # out.argmax(axis=1):  [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
