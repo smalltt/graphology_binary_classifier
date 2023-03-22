@@ -16,7 +16,9 @@ if __name__=="__main__":
 
     # load image for inference
     img = keras.preprocessing.image.load_img(
-        "data/dataset_gra/no_split/testing/conscientiousness/7.jpg", target_size=conf.input_im_size
+        # "data/dataset_gra/no_split/testing/conscientiousness/7.jpg", target_size=conf.input_im_size
+        # "data/dataset_gra/no_split/testing/extraversion/5.jpg", target_size=conf.input_im_size
+        conf.pred_img_path, target_size=conf.input_im_size
     )
     img_array = keras.preprocessing.image.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)  # Create batch axis

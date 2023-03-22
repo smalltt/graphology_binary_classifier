@@ -41,4 +41,5 @@ input_im_size = (image_size, image_size)
 batch_size = 32
 model_choose = model_convnexttiny  # model_self_def, model_convnexttiny
 epoch_choose = model_best_epoch_path  # model_best_epoch_path, model_last_epoch_path
+pred_img_path = 'data/dataset_gra/no_split/testing/conscientiousness/7.jpg'  # conscientiousness/7.jpg, extraversion/5.jpg
 epochs = 2
