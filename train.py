@@ -4,12 +4,13 @@ import os
 from common_utils import gpu as GPU
 from common_utils import dataset as ds
 from common_utils import folder
-from model_utils import model1
+
 import conf
 import tensorflow as tf
 from tensorflow import keras
 from model_utils import model_utils as utils
 
+tf.get_logger().setLevel('ERROR')  # clear warnings
 
 if __name__ == "__main__":
 
@@ -49,11 +50,14 @@ if __name__ == "__main__":
     '''
 
     # build model
-    model = model1.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
+    model_custom = conf.model_choose
+    model = model_custom.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
+    # model = model1.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
+    # model = model_convnexttiny.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
 
     # plot model network
     keras.utils.plot_model(
-        model, to_file= os.path.join(conf.output_folder, 'model.png'), show_shapes=False,
+        model, to_file= os.path.join(conf.output_folder, 'model_structure.png'), show_shapes=False,
         show_dtype=False,
         show_layer_names=True,
         rankdir='TB',
@@ -77,7 +81,7 @@ if __name__ == "__main__":
         # save logs
         tf.keras.callbacks.TensorBoard(log_dir=conf.logs, histogram_freq=1),
         # save the best model
-        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
+        tf.keras.callbacks.ModelCheckpoint(filepath=conf.model_best_epoch_path, save_best_only=True, save_weights_only=False, monitor='val_accuracy', mode='max', verbose=1),
         # # save the model for each epoch
         # keras.callbacks.ModelCheckpoint(conf.model_each_epoch_path),
         # tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', min_delta=0.001, patience=2, mode='auto', restore_best_weights=True),
@@ -92,6 +96,7 @@ if __name__ == "__main__":
     )
 
     # save trained model
-    utils.save_model(model, conf.model_last_epoch)
+    utils.save_model(model, conf.model_last_epoch_path)
+    utils.save_model(model, conf.model_best_epoch_path)
 
     utils.plot_loss_accuracy(model_fit_output,conf.output_folder)

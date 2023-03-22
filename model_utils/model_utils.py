@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-def save_model(arg_model,arg_model_last_model_path):
-    arg_model.save(arg_model_last_model_path)
+def save_model(arg_model,arg_model_last_epoch_path):
+    arg_model.save(arg_model_last_epoch_path)
 
 def plot_loss_accuracy(arg_model_fit_output, arg_output_folder):
     plt.style.use("ggplot")

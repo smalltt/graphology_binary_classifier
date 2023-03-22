@@ -4,11 +4,14 @@ import tensorflow as tf
 from tensorflow import keras
 import conf
 
+tf.get_logger().setLevel('ERROR')  # clear warnings
 
 if __name__=="__main__":
 
     # load trained model
-    loaded_model = tf.keras.models.load_model(conf.model_best_file_path)
+    # loaded_model = tf.keras.models.load_model(conf.model_best_epoch_path)
+    # loaded_model = tf.keras.models.load_model(conf.model_last_epoch_path)
+    loaded_model = tf.keras.models.load_model(conf.epoch_choose)
     loaded_model.summary()
 
     # load image for inference
