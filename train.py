@@ -69,12 +69,12 @@ if __name__ == "__main__":
 
     # model compile
     model.compile(
-        optimizer=keras.optimizers.Adam(1e-3),
-        loss="binary_crossentropy",
-        metrics=["accuracy"],
-        # optimizer=keras.optimizers.Adam(),
-        # loss=keras.losses.BinaryCrossentropy(),
-        # metrics=[keras.metrics.BinaryAccuracy()],
+        # optimizer=keras.optimizers.Adam(1e-3),
+        # loss="binary_crossentropy",
+        # metrics=["accuracy"],
+        optimizer=keras.optimizers.Adam(),
+        loss=keras.losses.BinaryCrossentropy(),
+        metrics=[keras.metrics.BinaryAccuracy()],
     )
 
     callback =[

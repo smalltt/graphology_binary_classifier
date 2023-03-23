@@ -7,8 +7,8 @@
 # train_ds_dir = "/usr/test/data/eg1/training"
 # test_ds_dir = "/usr/test/data/eg1/testing"
 
-train_ds_dir = "/usr/test/data/dataset_gra/split_1_2/training"  # no_split, split_1_2, split_3_4, split_6_8, split_9_12
-test_ds_dir = "/usr/test/data/dataset_gra/split_1_2/testing"
+train_ds_dir = "/usr/test/data/dataset_gra/no_split/training"  # no_split, split_1_2, split_3_4, split_6_8, split_9_12
+test_ds_dir = "/usr/test/data/dataset_gra/no_split/testing"
 
 val_spit=0.2
 
@@ -42,4 +42,5 @@ batch_size = 32
 model_choose = model_convnexttiny  # model_self_def, model_convnexttiny
 epoch_choose = model_best_epoch_path  # model_best_epoch_path, model_last_epoch_path
 pred_img_path = 'data/dataset_gra/no_split/testing/conscientiousness/7.jpg'  # conscientiousness/7.jpg, extraversion/5.jpg
-epochs = 2
+# pred_img_path = 'data/dataset_gra/no_split/testing/extraversion/5.jpg'
+epochs = 100

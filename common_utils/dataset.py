@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 import matplotlib.pyplot as plt
+import conf
 
 
 def gen_train_val_ds(arg_ds_dir, arg_image_size, arg_val_spit=0.2):
@@ -37,7 +38,7 @@ def visualize_sample_data(arg_train_ds, arg_class_names):
             plt.imshow(images[i].numpy().astype("uint8"))
             plt.title( arg_class_names[labels[i]]) 
             plt.axis("off")
-            plt.savefig('Sample_images.png')
+            plt.savefig(conf.output_folder+'/Sample_images.png')
 
 def visualize_augmentated_data(arg_train_ds, arg_class_names):
     data_augmentation = keras.Sequential(
@@ -57,4 +58,4 @@ def visualize_augmentated_data(arg_train_ds, arg_class_names):
             plt.imshow(augmented_images[i].numpy().astype("uint8"))
             plt.title( arg_class_names[labels[i]])     
             plt.axis("off")
-            plt.savefig('Augmentated_images.png')
+            plt.savefig(conf.output_folder+'/Augmentated_images.png')
