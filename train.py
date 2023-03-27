@@ -11,6 +11,11 @@ from tensorflow import keras
 from model_utils import model_utils as utils
 
 tf.get_logger().setLevel('ERROR')  # clear warnings
+'''
+import warnings
+# Filter out the warning message
+warnings.filterwarnings("ignore", message="Using a while_loop for converting")
+'''
 
 if __name__ == "__main__":
 
@@ -43,17 +48,9 @@ if __name__ == "__main__":
     train_ds = train_ds.prefetch(tf.data.AUTOTUNE)
     val_ds = val_ds.prefetch(tf.data.AUTOTUNE)
 
-    '''
-    import warnings
-    # Filter out the warning message
-    warnings.filterwarnings("ignore", message="Using a while_loop for converting")
-    '''
-
     # build model
-    model_custom = conf.model_choose
-    model = model_custom.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
-    # model = model1.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
-    # model = model_convnexttiny.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
+    model_chosen = conf.model_chosen
+    model = model_chosen.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
 
     # plot model network
     keras.utils.plot_model(
@@ -69,12 +66,12 @@ if __name__ == "__main__":
 
     # model compile
     model.compile(
-        # optimizer=keras.optimizers.Adam(1e-3),
-        # loss="binary_crossentropy",
-        # metrics=["accuracy"],
-        optimizer=keras.optimizers.Adam(),
-        loss=keras.losses.BinaryCrossentropy(),
-        metrics=[keras.metrics.BinaryAccuracy()],
+        optimizer=keras.optimizers.Adam(1e-3),
+        loss="binary_crossentropy",
+        metrics=["accuracy"],
+        # optimizer=keras.optimizers.Adam(),
+        # loss=keras.losses.BinaryCrossentropy(),
+        # metrics=[keras.metrics.BinaryAccuracy()],
     )
 
     callback =[

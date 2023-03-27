@@ -2,7 +2,6 @@
 
 from tensorflow import keras
 from tensorflow.keras import layers
-# from tools import aug_img
 
 def make_model(arg_input_shape, arg_num_classes):
     # base model
@@ -39,7 +38,6 @@ def make_model(arg_input_shape, arg_num_classes):
     x = keras.layers.GlobalAveragePooling2D()(x)
     x = keras.layers.Dropout(0.2)(x)  # Regularize with dropout
     outputs = keras.layers.Dense(1, activation = "sigmoid")(x)
-    # outputs = keras.layers.Dense(1)(x)
     model = keras.Model(inputs, outputs)
     model.summary()
     

@@ -9,15 +9,11 @@ tf.get_logger().setLevel('ERROR')  # clear warnings
 if __name__=="__main__":
 
     # load trained model
-    # loaded_model = tf.keras.models.load_model(conf.model_best_epoch_path)
-    # loaded_model = tf.keras.models.load_model(conf.model_last_epoch_path)
-    loaded_model = tf.keras.models.load_model(conf.epoch_choose)
+    loaded_model = tf.keras.models.load_model(conf.epoch_chosen)
     loaded_model.summary()
 
     # load image for inference
     img = keras.preprocessing.image.load_img(
-        # "data/dataset_gra/no_split/testing/conscientiousness/7.jpg", target_size=conf.input_im_size
-        # "data/dataset_gra/no_split/testing/extraversion/5.jpg", target_size=conf.input_im_size
         conf.pred_img_path, target_size=conf.input_im_size
     )
     img_array = keras.preprocessing.image.img_to_array(img)
