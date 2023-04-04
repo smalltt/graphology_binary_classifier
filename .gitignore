@@ -11,6 +11,9 @@ labels.save
 model_files/best_model/
 model_files/last_epoch_tf_model.h5/
 
+# output
+output/
+
 # nohup.out
 *.out
 
