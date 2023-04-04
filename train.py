@@ -38,7 +38,7 @@ if __name__ == "__main__":
     folder.create(conf.logs)
 
     # generate training and validation dataset
-    train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_spit)
+    train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_split)
     class_names = train_ds.class_names
 
     ds.visualize_sample_data(train_ds, class_names)
@@ -66,12 +66,12 @@ if __name__ == "__main__":
 
     # model compile
     model.compile(
-        optimizer=keras.optimizers.Adam(1e-3),
-        loss="binary_crossentropy",
-        metrics=["accuracy"],
-        # optimizer=keras.optimizers.Adam(),
-        # loss=keras.losses.BinaryCrossentropy(),
-        # metrics=[keras.metrics.BinaryAccuracy()],
+        # optimizer=keras.optimizers.Adam(1e-3),
+        # loss="binary_crossentropy",
+        # metrics=["accuracy"],
+        optimizer=keras.optimizers.Adam(),
+        loss=keras.losses.BinaryCrossentropy(),
+        metrics=[keras.metrics.BinaryAccuracy()],
     )
 
     callback =[

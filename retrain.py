@@ -29,7 +29,7 @@ if __name__=="__main__":
     model.summary()
 
     # generate training and validation dataset
-    train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_spit)
+    train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_split)
     class_names = train_ds.class_names
 
     ds.visualize_sample_data(train_ds, class_names)

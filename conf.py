@@ -4,11 +4,11 @@
 train_ds_dir = "/usr/test/data/dataset_gra/split_6_8/training"  # no_split, split_1_2, split_3_4, split_6_8, split_9_12
 test_ds_dir = "/usr/test/data/dataset_gra/split_6_8/testing"
 
-val_spit=0.2
+val_split=0.2
 
 # check if the folder exists
 import os
-from model_utils import model_self_def, model_convnexttiny
+from model_utils import model_self_def, model_convnexttiny, model_xception, model_vgg16
 
 output_folder = 'output'
 # model_json_path = os.path.join(output_folder, 'model.json')
@@ -29,8 +29,8 @@ image_size = 150
 input_shape = (image_size, image_size, 3)
 input_im_size = (image_size, image_size)
 batch_size = 32
-model_chosen = model_convnexttiny  # model_self_def, model_convnexttiny
+model_chosen = model_vgg16  # model_self_def, model_convnexttiny, model_xception, model_vgg16
 epoch_chosen = model_best_epoch_path  # model_best_epoch_path, model_last_epoch_path
 pred_img_path = 'data/dataset_gra/no_split/testing/conscientiousness/7.jpg'  # conscientiousness/7.jpg, extraversion/5.jpg
 # pred_img_path = 'data/dataset_gra/no_split/testing/extraversion/5.jpg'
-epochs = 100
+epochs = 1
