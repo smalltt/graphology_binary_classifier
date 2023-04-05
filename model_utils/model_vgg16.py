@@ -28,7 +28,7 @@ def make_model(arg_input_shape, arg_num_classes):
     ## Data augmentation
     data_augmentation = keras.Sequential([
         layers.RandomFlip("horizontal_and_vertical"),  
-        layers.RandomRotation(0.1), 
+        # layers.RandomRotation(0.1), 
         # layers.RandomTranslation(height_factor=(-0.2, 0.3)),  # has problem???
         layers.RandomContrast(factor=[0.1, 0.9]),
         layers.Rescaling(scale=1 / 255)  # [0, 1]
