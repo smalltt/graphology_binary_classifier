@@ -70,13 +70,13 @@ def split_image(arg_folder_path, arg_target_size,arg_targert_folder, arg_removed
                     print('{0} white percent is deleted, with white percent {1}'.format(filename, img_white_percent))
 
 if __name__=="__main__":
-    # folder_path = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
-    # targert_folder = "/usr/test/data/eg1/training/splitted_conscientiousness"
-    # removed_folder = "/usr/test/data/eg1/training/removed_conscientiousness"
+    folder_path = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
+    targert_folder = "/usr/test/data/eg1/training/splitted_conscientiousness"
+    removed_folder = "/usr/test/data/eg1/training/removed_conscientiousness"
 
-    folder_path = "/usr/test/data/eg1/training/preprocessed_extraversion"
-    targert_folder = "/usr/test/data/eg1/training/splitted_extraversion"
-    removed_folder = "/usr/test/data/eg1/training/removed_extraversion"
+    # folder_path = "/usr/test/data/eg1/training/preprocessed_extraversion"
+    # targert_folder = "/usr/test/data/eg1/training/splitted_extraversion"
+    # removed_folder = "/usr/test/data/eg1/training/removed_extraversion"
 
     tile_size = 800
     white_threshold = 97
