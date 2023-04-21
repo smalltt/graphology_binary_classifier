@@ -11,6 +11,9 @@ COPY requirements.txt ./
 RUN apt-get update && \
     # apt-get install -y python3-pip && \
     pip3 install --no-cache-dir -r requirements.txt
+# Install libgl1-mesa-glx to fix issue below
+# ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+RUN apt install libgl1-mesa-glx -y
 
 # # Expose a port
 # EXPOSE 5000

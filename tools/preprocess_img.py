@@ -40,11 +40,11 @@ def start(arg_img_path,arg_pre_img_path):
             print('has done %s for %s seconds' %(name,time.time() - start_time))
 
 if __name__=="__main__":
-  # folder_path = "/usr/test/data/eg1/training/conscientiousness"
-  # targert_folder = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
+  folder_path = "/usr/test/data/eg1/training/conscientiousness"
+  targert_folder = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
 
-  folder_path = "/usr/test/data/eg1/training/extraversion"
-  targert_folder = "/usr/test/data/eg1/training/preprocessed_extraversion"
+  # folder_path = "/usr/test/data/eg1/training/extraversion"
+  # targert_folder = "/usr/test/data/eg1/training/preprocessed_extraversion"
 
   folder.remove(targert_folder)
   folder.create(targert_folder)
