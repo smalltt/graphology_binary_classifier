@@ -11,6 +11,9 @@ labels.save
 model_files/best_model/
 model_files/last_epoch_tf_model.h5/
 
+# filter model_efficientnetb0.py, because the error need another version of tensorflow
+model_efficientnetb0.py
+
 # output
 output/
 
