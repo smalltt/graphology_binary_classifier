@@ -1,0 +1,9 @@
+graphviz==0.20.1
+matplotlib==3.6.3
+Pillow==9.4.0
+pydot==1.4.2
+tensorflow-datasets==4.8.2
+scikit-learn==1.2.1
+pickles==0.1.1
+opencv-python
+pydotplus==2.0.2
