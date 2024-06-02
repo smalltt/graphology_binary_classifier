@@ -31,7 +31,7 @@ def start(arg_img_path,arg_pre_img_path):
   for folder, subfolders, files in os.walk(arg_img_path):
         for name in files:
           if name.endswith('.jpg'):
-            x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
+                x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
             count = count + 1
             start_time = time.time()
             x = preprocessing_img(x)  # preprocessing

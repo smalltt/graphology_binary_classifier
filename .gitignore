@@ -17,6 +17,9 @@ model_efficientnetb0.py
 # output
 output/
 
+# trained models
+archive/models/
+
 # nohup.out
 *.out
 
