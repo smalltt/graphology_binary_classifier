@@ -30,8 +30,8 @@ def start(arg_img_path,arg_pre_img_path):
   count = 0
   for folder, subfolders, files in os.walk(arg_img_path):
         for name in files:
-          if name.endswith('.jpg'):
-                x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
+          if name.endswith('.jpg') or name.endswith('.bmp'):
+            x = cv2.imread(folder + '/' + name, cv2.IMREAD_GRAYSCALE)
             count = count + 1
             start_time = time.time()
             x = preprocessing_img(x)  # preprocessing
@@ -40,8 +40,8 @@ def start(arg_img_path,arg_pre_img_path):
             print('has done %s for %s seconds' %(name,time.time() - start_time))
 
 if __name__=="__main__":
-  folder_path = "/usr/test/data/eg1/training/conscientiousness"
-  targert_folder = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
+  folder_path = "/usr/test/data/Bennie_Peleman"
+  targert_folder = "/usr/test/data/preprocess_Bennie_Peleman"
 
   # folder_path = "/usr/test/data/eg1/training/extraversion"
   # targert_folder = "/usr/test/data/eg1/training/preprocessed_extraversion"

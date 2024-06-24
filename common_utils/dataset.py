@@ -1,4 +1,4 @@
-# Functions for dataset processing
+# Functions for dataset processing--bk
 
 import tensorflow as tf
 from tensorflow import keras
@@ -7,24 +7,38 @@ import matplotlib.pyplot as plt
 import conf
 
 
-def gen_train_val_ds(arg_ds_dir, arg_image_size, arg_val_spit=0.2):
+#     return train_ds, val_ds
+
+def gen_train_val_ds(arg_ds_dir, arg_image_size_wight, arg_image_size_height, arg_val_split=0.2, num_classes=None):
     ## Split samples as training and validation datasets
     train_ds, val_ds = tf.keras.utils.image_dataset_from_directory(
         directory=arg_ds_dir,
-        image_size=(arg_image_size, arg_image_size),
+        image_size=(arg_image_size_height,arg_image_size_wight),
         shuffle=True,
         seed=123,
-        validation_split=arg_val_spit,
+        validation_split=arg_val_split,
         subset="both",
         )
+    # Extract class names before mapping
+    class_names = train_ds.class_names
+    
+    return train_ds, val_ds, class_names
 
-    return train_ds, val_ds
+# def gen_test_ds(arg_ds_dir, arg_image_size, arg_batch_size):
+#     test_ds = tf.keras.utils.image_dataset_from_directory(
+#         directory=arg_ds_dir,  
+#         batch_size=arg_batch_size,
+#         image_size=(arg_image_size, arg_image_size),
+#         seed=123,
+#         )
 
-def gen_test_ds(arg_ds_dir, arg_image_size, arg_batch_size):
+#     return test_ds
+
+def gen_test_ds(arg_ds_dir, arg_image_size_wight, arg_image_size_height, arg_batch_size, num_classes=None):
     test_ds = tf.keras.utils.image_dataset_from_directory(
         directory=arg_ds_dir,  
         batch_size=arg_batch_size,
-        image_size=(arg_image_size, arg_image_size),
+        image_size=(arg_image_size_height, arg_image_size_wight),
         seed=123,
         )
 

@@ -1,8 +1,8 @@
 # configuration variable
 
 # data source path
-train_ds_dir = "/usr/test/data/dataset_gra/split_6_8/training"  # no_split, split_1_2, split_3_4, split_6_8, split_9_12
-test_ds_dir = "/usr/test/data/dataset_gra/split_6_8/testing"
+train_ds_dir = "/usr/test/data/conscientiousness-extraversion/train"  # no_split, split_1_2, split_3_4, split_6_8, split_9_12
+test_ds_dir = "/usr/test/data/conscientiousness-extraversion/test"
 
 val_split=0.2
 
@@ -25,12 +25,19 @@ model_evaluation_inference_path = os.path.join(output_folder, 'best_model', 'bes
 logs = "logs"
 
 # hyperparameters for modeling
-image_size = 150
-input_shape = (image_size, image_size, 3)
-input_im_size = (image_size, image_size)
-batch_size = 32
-model_chosen = model_xception  # model_self_def, model_convnexttiny, model_xception, model_vgg16, model_resnet50v2, model_inceptionv3, model_mobilenetv2, model_densenet121, model_nasnetmobile, model_efficientnetb0
-epoch_chosen = model_last_epoch_path  # model_best_epoch_path, model_last_epoch_path
-pred_img_path = 'data/dataset_gra/no_split/testing/conscientiousness/7.jpg'  # conscientiousness/7.jpg, extraversion/5.jpg
-# pred_img_path = 'data/dataset_gra/no_split/testing/extraversion/5.jpg'
+image_size_width = 850
+image_size_height = 825
+
+scale_ratio = 0.5
+image_size_width = int(image_size_width * scale_ratio)
+image_size_height = int(image_size_height * scale_ratio)
+
+# image_size = 150
+input_shape = (image_size_height, image_size_width, 3)
+input_im_size = (image_size_width, image_size_height)
+batch_size = 16
+model_chosen = model_convnexttiny  # model_self_def, model_convnexttiny, model_xception, model_vgg16, model_resnet50v2, model_inceptionv3, model_mobilenetv2, model_densenet121, model_nasnetmobile, model_efficientnetb0
+epoch_chosen = model_best_epoch_path  # model_best_epoch_path, model_last_epoch_path
+# pred_img_path = 'data/eg1/testing/conscientiousness/1.jpg'  # conscientiousness/7.jpg, extraversion/5.jpg
+pred_img_path = 'data/splitted_Bennie_Peleman/out3_0_1.jpg'
 epochs = 100

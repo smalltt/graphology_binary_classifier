@@ -38,8 +38,10 @@ if __name__ == "__main__":
     folder.create(conf.logs)
 
     # generate training and validation dataset
-    train_ds, val_ds = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size, conf.val_split)
-    class_names = train_ds.class_names
+    train_ds, val_ds, class_names = ds.gen_train_val_ds(conf.train_ds_dir, conf.image_size_width, conf.image_size_height, conf.val_split)
+    # class_names = class_names
+    
+    # print(class_names)
 
     ds.visualize_sample_data(train_ds, class_names)
     ds.visualize_augmentated_data(train_ds, class_names)
@@ -51,7 +53,7 @@ if __name__ == "__main__":
     # build model
     model_chosen = conf.model_chosen
     model = model_chosen.make_model(arg_input_shape=conf.input_shape, arg_num_classes=len(class_names))
-
+    
     # plot model network
     keras.utils.plot_model(
         model, to_file= os.path.join(conf.output_folder, 'model_structure.png'), show_shapes=False,
@@ -91,6 +93,9 @@ if __name__ == "__main__":
         callbacks=callback,
         validation_data=val_ds,
     )
+
+    # import sys
+    # sys.exit(0)
 
     # save trained model
     utils.save_model(model, conf.model_last_epoch_path)

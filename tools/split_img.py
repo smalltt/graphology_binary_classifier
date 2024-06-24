@@ -21,7 +21,7 @@ def split_image(arg_folder_path, arg_target_size,arg_targert_folder, arg_removed
     file_paths = [os.path.join(folder_path, img_path) for img_path in img_list]
 
     for file_path in file_paths:
-        if file_path[-3:] == "jpg":
+        if file_path[-3:] == "jpg" or file_path[-3:] == "bmp":
             pass
         else:
             continue
@@ -70,9 +70,9 @@ def split_image(arg_folder_path, arg_target_size,arg_targert_folder, arg_removed
                     print('{0} white percent is deleted, with white percent {1}'.format(filename, img_white_percent))
 
 if __name__=="__main__":
-    folder_path = "/usr/test/data/eg1/training/preprocessed_conscientiousness"
-    targert_folder = "/usr/test/data/eg1/training/splitted_conscientiousness"
-    removed_folder = "/usr/test/data/eg1/training/removed_conscientiousness"
+    folder_path = "/usr/test/data/preprocess_Bennie_Peleman"
+    targert_folder = "/usr/test/data/splitted_Bennie_Peleman"
+    removed_folder = "/usr/test/data/removed_Bennie_Peleman"
 
     # folder_path = "/usr/test/data/eg1/training/preprocessed_extraversion"
     # targert_folder = "/usr/test/data/eg1/training/splitted_extraversion"
